@@ -6,52 +6,61 @@
   <title>Can You Let Me Fix It?</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff8dc;
+      background-image: url('https://i.imgur.com/w1URsZz.png'); /* Love & duck background */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
       text-align: center;
-      margin-top: 100px;
+      padding-top: 100px;
     }
     h1 {
       margin-bottom: 50px;
+      color: #ff69b4;
+      text-shadow: 2px 2px #fff;
     }
     button {
       padding: 15px 30px;
       font-size: 18px;
       cursor: pointer;
       border: none;
-      border-radius: 8px;
+      border-radius: 20px;
       margin: 20px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
     }
     #yesButton {
-      background-color: #4CAF50;
-      color: white;
+      background-color: #ffd700;
+      color: #000;
     }
     #neverButton {
       position: absolute;
-      background-color: #f44336;
+      background-color: #ff6347;
       color: white;
       transition: top 0.2s, left 0.2s;
+    }
+    .emoji {
+      font-size: 30px;
+      animation: float 2s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+  <div class="emoji">💛 🐤 💖</div>
   <h1>Can you let me fix it?</h1>
-  <button id="yesButton">Yes I do</button>
-  <button id="neverButton">Never happened</button>
-
+  <button id="yesButton">Yes I do 💕</button>
+  <button id="neverButton">Never happened 🙈</button>
   <script>
     const neverButton = document.getElementById('neverButton');
 
     function moveButton() {
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      neverButton.style.left = `${x}px`;
-      neverButton.style.top = `${y}px`;
-    }
-
-    neverButton.addEventListener('mouseover', moveButton);
-    window.addEventListener('resize', moveButton);
-
-    moveButton();
-  </script>
-</body>
-</html>
+      const x = Math.random() * (window.innerWidth
