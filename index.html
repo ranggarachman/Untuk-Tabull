@@ -8,10 +8,10 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #fff8d6;
+      background-color: #fff8c6;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     h1 {
@@ -48,15 +48,21 @@
 
     .floating {
       position: absolute;
-      top: 30px;
-      right: 20px;
       background-color: #ff6b6b;
       color: white;
       padding: 10px 20px;
       border-radius: 30px;
       font-size: 1em;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      z-index: 10;
+      z-index: 999;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .img-container img {
+      width: 250px;
+      max-width: 80%;
+      margin-top: 20px;
     }
 
     .bg-decor {
@@ -71,18 +77,12 @@
       50% { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
-
-    .img-container img {
-      width: 250px;
-      max-width: 80%;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Floating Label -->
-<div class="floating" style="left: 20px; top: 30px;">Never happened 😤</div>
+  <!-- Tombol yang Melompat -->
+  <div class="floating" id="floatingBtn" style="left: 20px; top: 20px;">Never happened 😤</div>
 
   <!-- Judul -->
   <h1>Can you let me fix it?</h1>
@@ -98,16 +98,32 @@
   <!-- Tombol WA -->
   <div class="buttons">
     <a href="intent://send/?phone=6289524279084&text=yes%20i%20do#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
-  <button class="button-yes">Yes I do 💕</button>
-</a>
+      <button class="button-yes">Yes I do 💕</button>
+    </a>
   </div>
 
-  <!-- Background emoji decor -->
+  <!-- Emoji dekorasi -->
   <div class="bg-decor" style="left: 10%; top: 80%;">💛</div>
   <div class="bg-decor" style="left: 30%; top: 70%;">🐤</div>
   <div class="bg-decor" style="left: 50%; top: 85%;">💖</div>
   <div class="bg-decor" style="left: 70%; top: 75%;">🐤</div>
   <div class="bg-decor" style="left: 90%; top: 80%;">💛</div>
+
+  <!-- Script untuk melompat -->
+  <script>
+    const floating = document.getElementById("floatingBtn");
+
+    floating.addEventListener("click", () => {
+      const maxX = window.innerWidth - floating.offsetWidth;
+      const maxY = window.innerHeight - floating.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      floating.style.left = randomX + "px";
+      floating.style.top = randomY + "px";
+    });
+  </script>
 
 </body>
 </html>
