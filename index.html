@@ -1,89 +1,113 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Can You Let Me Fix It?</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Can you let me fix it?</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff8d6;
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #fff700;
-      background-image: none;
       text-align: center;
-      padding-top: 100px;
-      overflow: hidden;
+      overflow-x: hidden;
     }
+
     h1 {
-      margin-bottom: 50px;
-      color: #ff1493;
-      text-shadow: 2px 2px #fff;
+      color: #ff69b4;
+      font-size: 2.2em;
+      margin-top: 40px;
+      text-shadow: 1px 1px 2px #ffb6c1;
     }
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      cursor: pointer;
+
+    .emoji-row {
+      font-size: 2em;
+      margin: 10px 0;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .button-yes {
+      background-color: #ffd000;
       border: none;
       border-radius: 20px;
-      margin: 20px;
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s;
+      color: black;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    button:hover {
-      transform: scale(1.1);
+
+    .button-yes:hover {
+      background-color: #ffc107;
     }
-    #yesButton {
-      background-color: #fff;
-      color: #000;
-    }
-    #neverButton {
+
+    .floating {
       position: absolute;
-      background-color: #ff6347;
+      top: 30px;
+      right: 20px;
+      background-color: #ff6b6b;
       color: white;
-      transition: top 0.2s, left 0.2s;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1em;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 10;
     }
-    .emoji {
-      font-size: 28px;
-      animation: float 3s infinite ease-in-out;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-    .cloud {
+
+    .bg-decor {
+      font-size: 2.5em;
       position: absolute;
-      font-size: 28px;
       animation: float 4s infinite ease-in-out;
-      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .img-container img {
+      width: 250px;
+      max-width: 80%;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="emoji">💛 🐤 💖 💛 🐤 💖 💛 🐤 💖</div>
+
+  <!-- Floating Label -->
+  <div class="floating">Never happened 😤</div>
+
+  <!-- Judul -->
   <h1>Can you let me fix it?</h1>
-  <button id="yesButton">Yes I do 💕</button>
-  <button id="neverButton">Never happened 🙈</button>  <!-- Banyak bebek dan love terapung -->  <script>
-    const neverButton = document.getElementById('neverButton');
 
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      neverButton.style.left = `${x}px`;
-      neverButton.style.top = `${y}px`;
-    }
+  <!-- Emoji Bar -->
+  <div class="emoji-row">💛🐤💖💛🐤💖💛🐤💖</div>
 
-    neverButton.addEventListener('mouseover', moveButton);
-    window.addEventListener('resize', moveButton);
-    moveButton();
+  <!-- Gambar Bebek -->
+  <div class="img-container">
+    <img src="https://i.ibb.co/XjmrSRd/cute-duck.png" alt="Cute Duck" />
+  </div>
 
-    // Tambah love dan bebek acak
-    for (let i = 0; i < 40; i++) {
-      const icon = document.createElement('div');
-      icon.classList.add('cloud');
-      icon.textContent = Math.random() < 0.5 ? '🐤' : '💖';
-      icon.style.left = Math.random() * 100 + 'vw';
-      icon.style.top = Math.random() * 100 + 'vh';
-      icon.style.fontSize = (24 + Math.random() * 16) + 'px';
-      document.body.appendChild(icon);
-    }
-  </script></body>
+  <!-- Tombol WA -->
+  <div class="buttons">
+    <a href="https://wa.me/6289524279084?text=yes%20i%20do" target="_blank">
+      <button class="button-yes">Yes I do 💕</button>
+    </a>
+  </div>
+
+  <!-- Background emoji decor -->
+  <div class="bg-decor" style="left: 10%; top: 80%;">💛</div>
+  <div class="bg-decor" style="left: 30%; top: 70%;">🐤</div>
+  <div class="bg-decor" style="left: 50%; top: 85%;">💖</div>
+  <div class="bg-decor" style="left: 70%; top: 75%;">🐤</div>
+  <div class="bg-decor" style="left: 90%; top: 80%;">💛</div>
+
+</body>
 </html>
