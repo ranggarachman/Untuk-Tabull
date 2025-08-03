@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +6,15 @@
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #fff8dc;
-      background-image: url('https://i.imgur.com/w1URsZz.png'); /* Love & duck background */
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+      background-color: #fff700;
+      background-image: none;
       text-align: center;
       padding-top: 100px;
+      overflow: hidden;
     }
     h1 {
       margin-bottom: 50px;
-      color: #ff69b4;
+      color: #ff1493;
       text-shadow: 2px 2px #fff;
     }
     button {
@@ -34,7 +31,7 @@
       transform: scale(1.1);
     }
     #yesButton {
-      background-color: #ffd700;
+      background-color: #fff;
       color: #000;
     }
     #neverButton {
@@ -44,23 +41,49 @@
       transition: top 0.2s, left 0.2s;
     }
     .emoji {
-      font-size: 30px;
-      animation: float 2s infinite ease-in-out;
+      font-size: 28px;
+      animation: float 3s infinite ease-in-out;
     }
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0); }
     }
+    .cloud {
+      position: absolute;
+      font-size: 28px;
+      animation: float 4s infinite ease-in-out;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
-  <div class="emoji">💛 🐤 💖</div>
+  <div class="emoji">💛 🐤 💖 💛 🐤 💖 💛 🐤 💖</div>
   <h1>Can you let me fix it?</h1>
   <button id="yesButton">Yes I do 💕</button>
-  <button id="neverButton">Never happened 🙈</button>
-  <script>
+  <button id="neverButton">Never happened 🙈</button>  <!-- Banyak bebek dan love terapung -->  <script>
     const neverButton = document.getElementById('neverButton');
 
     function moveButton() {
-      const x = Math.random() * (window.innerWidth
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 150);
+      neverButton.style.left = `${x}px`;
+      neverButton.style.top = `${y}px`;
+    }
+
+    neverButton.addEventListener('mouseover', moveButton);
+    window.addEventListener('resize', moveButton);
+    moveButton();
+
+    // Tambah love dan bebek acak
+    for (let i = 0; i < 40; i++) {
+      const icon = document.createElement('div');
+      icon.classList.add('cloud');
+      icon.textContent = Math.random() < 0.5 ? '🐤' : '💖';
+      icon.style.left = Math.random() * 100 + 'vw';
+      icon.style.top = Math.random() * 100 + 'vh';
+      icon.style.fontSize = (24 + Math.random() * 16) + 'px';
+      document.body.appendChild(icon);
+    }
+  </script></body>
+</html>
